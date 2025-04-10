@@ -1,0 +1,14 @@
+:root {
+    --ability-colour: #9b2818;
+    --spell-colour: #4c39a5;
+}
+
+.main {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

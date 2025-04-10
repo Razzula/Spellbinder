@@ -1,0 +1,157 @@
+.coreblock {
+    background: #fdf1dc;
+    border: 2px solid #a5792a;
+    border-radius: 8px;
+    padding: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    width: 250px;
+    height: 350px;
+    min-width: 250px;
+    min-height: 350px;
+}
+
+.header {
+    /* font-size: 14px; */
+    font-weight: bold;
+    color: #58180d;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.name {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.nameWrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+}
+
+.name {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+    transition: transform 0.1s ease;
+    transform-origin: left center;
+}
+
+.major {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.minor {
+    font-style: italic;
+    font-size: 8px;
+}
+
+.description {
+    flex: 1;
+    font-size: 10px;
+    text-align: left;
+    padding: 0 8px;
+    text-align: center;
+}
+
+.descriptionLine {
+    padding-top: 8px;
+}
+
+.metablock {
+    font-size: 10px;
+    padding: 0 4px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.submetablock {
+    font-size: 7px;
+    padding: 0 4px;
+    text-align: center;
+}
+
+.firstChar {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: var(--accentColour);
+}
+
+.restChars {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: black;
+}
+
+.hr {
+    mask-image: url('/stat-block-header-bar.svg');
+    -webkit-mask-image: url('/stat-block-header-bar.svg');
+    mask-repeat: no-repeat;
+    background-color: var(--accentColour);
+    width: 100%;
+    height: 8px;
+    /* margin: 4px 0; */
+}
+
+.components {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    font-size: 0.65em;
+    justify-content: end;
+}
+
+.components,
+.level {
+    align-self: flex-start;
+}
+
+.sourceLabel {
+    position: absolute;
+    size: 8px;
+    right: 0;
+    bottom: 12px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 6px;
+    font-style: italic;
+    color: #d2ba88;
+    padding: 0 4px;
+}
+
+.concentrationIcon {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background: var(--accentColour);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    text-align: center;
+    line-height: 1.2em;
+    color: white;
+    font-weight: bold;
+    padding: 0.1em;
+}
+
+.ritualIcon {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background: var(--accentColour);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.2em;
+    color: white;
+    font-weight: bold;
+}

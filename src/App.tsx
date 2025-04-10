@@ -1,0 +1,90 @@
+import Card from './Card'
+
+import './App.css'
+
+function App() {
+
+    return (
+        <div className='main' style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+            <Card
+                type={'ability'}
+
+                name={'Breath Weapon'}
+                castingTime={'1 action'}
+                school={'Fire (Gold Dragonborn)'}
+                description={[
+                    'You can use your action to exhale destructuve energy. It deals damage in a 15ft. cone.',
+                    'When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. A creature takes half damage on a successful save.',
+                    'After using your breath weapon, you cannot use it again until you complete a short or long rest.',
+                ]}
+
+                area={'15 ft. cone'}
+                save={'Dexterity'}
+                dc={'8 + Constitution modifier + proficiency bonus'}
+                damage={{
+                    amount: '2d6*',
+                    type: 'Fire',
+                }}
+
+                higherLevel={'the damage increases to 3d6 (6th), 4d6 (11th), and 5d6 (16th).'}
+
+                source={'Player’s Handbook (2024), pg. 236'}
+            />
+
+            <Card
+                type={'spell'}
+
+                name={'Fireball'}
+                castingTime={'1 action'}
+                school={'Fire (Evocation)'}
+                description={[
+                    'A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion. Each creature in a 20-foot-radius Sphere centered on that point makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save or half as much damage on a successful one.',
+                    'Flammable objects in the area that aren’t being worn or carried start burning.',
+                ]}
+
+                range={'150 ft.'}
+                area={'20 ft. radius sphere'}
+                save={'Dexterity'}
+
+                level={3}
+                components={{
+                    verbal: true,
+                    somatic: true,
+                    material: 'a tiny ball of bat guano and sulfur',
+                }}
+
+                higherLevel={'the damage increases by 1d6 for each spell slot level above 3.'}
+                source={'Free Rules (2024), pg. 274'}
+            />
+
+            <Card
+                type={'spell'}
+
+                name={'Detect Poison & Disease'}
+                castingTime={'1 action'}
+                school={'Detection (Divination)'}
+                description={[
+                    'For the duration, you sense the location of poisons, poisonous or venomous creatures, and magical contagions within 30 feet of yourself. You sense the kind of poison, creature, or contagion in each case.',
+                    'The spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.',
+                ]}
+
+                range={'Self'}
+                area={'30 ft. radius sphere'}
+                duration={'10 minutes'}
+
+                level={1}
+                components={{
+                    verbal: true,
+                    somatic: true,
+                    material: 'a yew leaf',
+                    ritual: true,
+                    concentration: true,
+                }}
+
+                source={'Free Rules (2024), pg. 262'}
+            />
+        </div>
+    );
+}
+
+export default App
