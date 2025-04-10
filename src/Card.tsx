@@ -1,5 +1,7 @@
-import './Card.css';
 import ScaledName from './components/ScaledName';
+import { parseMarkdown } from './utils';
+
+import './Card.css';
 
 type CardProps = {
     type: 'spell' | 'ability';
@@ -8,20 +10,24 @@ type CardProps = {
     castingTime: string;
     school: string;
     description: string[];
-    range?: string;
-    area?: string;
+    meta?: MetaProps;
     higherLevel?: string;
     components?: ComponentProps;
-    attack?: string;
+    source?: string;
+};
+
+type MetaProps = {
+    range?: string;
+    area?: string;
     save?: string;
     dc?: string;
+    attack?: string;
     damage?: {
         type: string;
         amount: string;
     };
     duration?: string;
     effect?: string;
-    source?: string;
 };
 
 type ComponentProps = {
@@ -39,16 +45,9 @@ export default function Card({
     castingTime,
     school,
     description,
-    range,
-    area,
+    meta,
     higherLevel,
     components,
-    attack,
-    save,
-    dc,
-    damage,
-    duration,
-    effect,
     source,
 }: CardProps) {
 
@@ -59,8 +58,6 @@ export default function Card({
         return { word, isFiller };
     });
 
-    const meta = range || area || save || dc || damage || components?.material || duration || castingTime || effect;
-
     return (
         <div className='coreblock'
             style={{
@@ -70,28 +67,28 @@ export default function Card({
 
             {/* HEADER */}
             <div className='header'>
-                { type === 'spell' &&
+                {type === 'spell' &&
                     <div className='level'>
-                        { level !==  undefined ? `${level} ` : '?'}
+                        {level !== undefined ? `${level} ` : '?'}
                     </div>
                 }
                 <ScaledName>
-                        {
-                            nameWords.map(({ word, isFiller }, i) => (
-                                <span key={i}>
-                                    {isFiller ? (
-                                        <span className='restChars'>{word.toUpperCase()}</span>
-                                    ) : (
-                                        <>
-                                            <span className='firstChar'>{word[0].toUpperCase()}</span>
-                                            <span className='restChars'>{word.slice(1).toUpperCase()}</span>
-                                        </>
-                                    )}{' '}
-                                </span>
-                            ))
-                        }
+                    {
+                        nameWords.map(({ word, isFiller }, i) => (
+                            <span key={i}>
+                                {isFiller ? (
+                                    <span className='restChars'>{word.toUpperCase()}</span>
+                                ) : (
+                                    <>
+                                        <span className='firstChar'>{word[0].toUpperCase()}</span>
+                                        <span className='restChars'>{word.slice(1).toUpperCase()}</span>
+                                    </>
+                                )}{' '}
+                            </span>
+                        ))
+                    }
                 </ScaledName>
-                { components &&
+                {components &&
                     <div className='components'>
                         <div>
                             {components.verbal && <span className='verbal'>V</span>}
@@ -124,68 +121,70 @@ export default function Card({
             </div>
 
             {/* BODY */}
-            <div className='description'>{
-                description.map((line, i) => (
-                    <div key={i} className='descriptionLine'>
-                        {line}
-                    </div>
-                ))
-            }</div>
+            <div className='description'>
+                {
+                    description.map((line, i) => (
+                        <div key={i} className='descriptionLine'>
+                            {parseMarkdown(line)}
+                        </div>
+                    ))
+                }
+            </div>
 
-            { meta &&
+            {meta &&
                 <>
                     <div className='hr' />
 
                     <div className='metablock'>
                         {/* metadata */}
-                        { (range || area) &&
+                        {(meta?.range || meta?.area) &&
                             <div>
                                 <strong>
-                                    {range && <span className='metaLabel'>Range</span>}
-                                    {range && area && <span className='metaLabel'>, </span>}
-                                    {area && <span className='metaLabel'>Area</span>}
+                                    {meta?.range && <span className='metaLabel'>Range</span>}
+                                    {meta?.range && meta?.area && <span className='metaLabel'>, </span>}
+                                    {meta?.area && <span className='metaLabel'>Area</span>}
                                     :
                                 </strong>
                                 {' '}
                                 <span>
-                                    {range && <span className='metaLabel'>{range}</span>}
-                                    {range && area && <span className='metaLabel'> (</span>}
-                                    {area && <span className='metaLabel'>{area}</span>}
-                                    {range && area && <span className='metaLabel'>)</span>}
+                                    {meta?.range && <span className='metaLabel'>{meta?.range}</span>}
+                                    {meta?.range && meta?.area && <span className='metaLabel'> (</span>}
+                                    {meta?.area && <span className='metaLabel'>{meta?.area}</span>}
+                                    {meta?.range && meta?.area && <span className='metaLabel'>)</span>}
                                 </span>
                             </div>
                         }
-                        { duration &&
+                        {meta?.duration &&
                             <div>
-                                <strong>Duration:</strong> {duration} { components?.concentration && '(Concentration)'}
+                                <strong>Duration:</strong> {meta?.duration} {components?.concentration && '(Concentration)'}
                             </div>
                         }
-                        { save &&
+                        {meta?.save &&
                             <div>
-                                <strong>Save:</strong> {save}
+                                <strong>Save:</strong> {meta?.save}
                             </div>
                         }
-                        { dc &&
+                        {meta?.dc &&
                             <div>
-                                <strong>DC:</strong> {dc}
+                                <strong>DC:</strong> {meta?.dc}
                             </div>
                         }
-                        { attack &&
+                        {meta?.attack &&
                             <div>
-                                <strong>Attack:</strong> {attack}
+                                <strong>Attack:</strong> {meta?.attack}
                             </div>
                         }
-                        { damage &&
+                        {meta?.damage &&
                             <div>
-                                <strong>Damage:</strong> {damage.amount} { damage.type && `(${damage.type})`}
+                                <strong>Damage:</strong> {meta?.damage.amount} {meta?.damage.type && `(${meta?.damage.type})`}
                             </div>
                         }
-                        { effect &&
+                        {meta?.effect &&
                             <div>
-                                <strong>Effect:</strong> {effect}
+                                <strong>Effect:</strong> {meta?.effect}
                             </div>
                         }
-                        { components?.material &&
+                        {components?.material &&
                             <div>
                                 <strong>Material:</strong> <span className='minor'> {components.material}</span>
                             </div>
@@ -197,7 +196,7 @@ export default function Card({
             <div className='hr' />
 
             {/* FOOTER */}
-            { higherLevel &&
+            {higherLevel &&
                 // upcasting information
                 <div className='submetablock'>* {higherLevel}</div>
             }
