@@ -1,4 +1,4 @@
-# Spelljammer
+# Spellbinder
 
 A printable D&D spell and ability card generator for the 2024 rules.
 
