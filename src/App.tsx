@@ -9,7 +9,7 @@ function App() {
             <Card
                 type='ability'
                 name='Breath Weapon'
-                castingTime='1 action'
+                castingTime='Action'
                 school='Fire (Gold Dragonborn)'
                 description={[
                     '*You can use your action to exhale destructuve energy.*',
@@ -32,7 +32,7 @@ function App() {
             <Card
                 type='spell'
                 name='Fireball'
-                castingTime='1 action'
+                castingTime='Action'
                 school='Fire (Evocation)'
                 description={[
                     '*A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion.*',
@@ -61,7 +61,7 @@ function App() {
             <Card
                 type='spell'
                 name='Detect Poison & Disease'
-                castingTime='1 action'
+                castingTime='Action'
                 school='Detection (Divination)'
                 description={[
                     'For the duration, you sense the location of **poisons**, **poisonous or venomous creatures**, and **magical contagions** within **30 feet** of yourself. You sense the kind of poison, creature, or contagion in each case.',

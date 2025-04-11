@@ -116,7 +116,7 @@ export default function Card({
                     {castingTime}
                 </div>
                 <div className='meta minor'>
-                    {school}
+                    {parseMarkdown(school)}
                 </div>
             </div>
 
@@ -147,9 +147,9 @@ export default function Card({
                                 </strong>
                                 {' '}
                                 <span>
-                                    {meta?.range && <span className='metaLabel'>{meta?.range}</span>}
+                                    {meta?.range && <span className='metaLabel'>{parseMarkdown(meta?.range)}</span>}
                                     {meta?.range && meta?.area && <span className='metaLabel'> (</span>}
-                                    {meta?.area && <span className='metaLabel'>{meta?.area}</span>}
+                                    {meta?.area && <span className='metaLabel'>{parseMarkdown(meta?.area)}</span>}
                                     {meta?.range && meta?.area && <span className='metaLabel'>)</span>}
                                 </span>
                             </div>
@@ -176,7 +176,7 @@ export default function Card({
                         }
                         {meta?.damage &&
                             <div>
-                                <strong>Damage:</strong> {meta?.damage.amount} {meta?.damage.type && `(${meta?.damage.type})`}
+                                <strong>Damage:</strong> {parseMarkdown(meta?.damage.amount)} {meta.damage.type && <span>({parseMarkdown(meta.damage.type)})</span>}
                             </div>
                         }
                         {meta?.effect &&

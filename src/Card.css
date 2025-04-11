@@ -131,6 +131,14 @@
     padding: 0 4px;
 }
 
+.icon {
+    height: 1em;
+    width: 1em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    vertical-align: text-bottom;
+}
+
 .concentrationIcon {
     display: inline-block;
     width: 1.2em;

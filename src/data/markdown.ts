@@ -1,0 +1,85 @@
+export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
+    // damages
+    'acid': { colour: 'green', icon: 'damage/acid' },
+    'cold': { colour: 'cyan', icon: 'damage/cold' },
+    'fire': { colour: 'red', icon: 'damage/fire' },
+    'force': { colour: 'purple', icon: 'damage/force' },
+    'lightning': { colour: 'yellow', icon: 'damage/lightning' },
+    'necrotic': { colour: 'black', icon: 'damage/necrotic' },
+    'poison': { colour: 'darkgreen', icon: 'damage/poison' },
+    'psychic': { colour: 'magenta', icon: 'damage/psychic' },
+    'radiant': { colour: 'gold', icon: 'damage/radiant' },
+    'thunder': { colour: 'blue', icon: 'damage/thunder' },
+
+    'bludgeoning': { colour: 'grey', icon: 'damage/bludgeoning' },
+    'slashing': { colour: 'silver', icon: 'damage/slashing' },
+    'piercing': { colour: 'darkgrey', icon: 'damage/piercing' },
+
+    // conditions
+    'blinded': { colour: 'black', icon: 'condition/blinded' },
+    'charmed': { colour: 'pink', icon: 'condition/charmed' },
+    'deafened': { colour: 'grey', icon: 'condition/deafened' },
+    'exhaustion': { colour: 'darkorange', icon: 'condition/exhaustion' },
+    'frightened': { colour: 'darkblue', icon: 'condition/frightened' },
+    'grappled': { colour: 'brown', icon: 'condition/grappled' },
+    'incapacitated': { colour: 'darkred', icon: 'condition/incapacitated' },
+    'invisible': { colour: 'lightgrey', icon: 'condition/invisible' },
+    'paralyzed': { colour: 'navy', icon: 'condition/paralyzed' },
+    'petrified': { colour: 'slategrey', icon: 'condition/petrified' },
+    'poisoned': { colour: 'darkgreen', icon: 'condition/poisoned' },
+    'prone': { colour: 'saddlebrown', icon: 'condition/prone' },
+    'restrained': { colour: 'maroon', icon: 'condition/restrained' },
+    'stunned': { colour: 'violet', icon: 'condition/stunned' },
+    'unconscious': { colour: 'black', icon: 'condition/unconscious' },
+
+    // area of effect https://www.dndbeyond.com/sources/dnd/phb-2024/rules-glossary#AreaofEffect
+    'cone': { colour: '#58180d', icon: 'target/cone' },
+    'cube': { colour: '#58180d', icon: 'target/cube' },
+    'cylinder': { colour: '#58180d', icon: 'target/cylinder' },
+    'emanation': { colour: '#58180d', icon: 'target/emanation' },
+    'line': { colour: '#58180d', icon: 'target/line' },
+    'sphere': { colour: '#58180d', icon: 'target/sphere' },
+    'circle': { colour: '#58180d', icon: 'target/circle' },
+
+    // hazards https://www.dndbeyond.com/sources/dnd/phb-2024/rules-glossary#Hazard
+    'burning': { colour: 'red', icon: 'hazard/burning' },
+    'dehydration': { colour: 'blue', icon: 'hazard/dehydration' },
+    'falling': { colour: 'grey', icon: 'hazard/falling' },
+    'malnutrition': { colour: 'orange', icon: 'hazard/malnutrition' },
+    'suffocating': { colour: 'lightblue', icon: 'hazard/suffocating' },
+
+    // dice
+    'd4': { colour: '#58180d', icon: 'dice/d4' },
+    'd6': { colour: '#58180d', icon: 'dice/d6' },
+    'd8': { colour: '#58180d', icon: 'dice/d8' },
+    'd10': { colour: '#58180d', icon: 'dice/d10' },
+    'd12': { colour: '#58180d', icon: 'dice/d12' },
+    'd20': { colour: '#58180d', icon: 'dice/d20' },
+    'advantage': { colour: 'green', icon: 'dice/advantage' },
+    'disadvantage': { colour: 'red', icon: 'dice/disadvantage' },
+
+    // schools of magic
+    'abjuration': { colour: '#58180d', icon: 'spell/abjuration' },
+    'conjuration': { colour: '#58180d', icon: 'spell/conjuration' },
+    'divination': { colour: '#58180d', icon: 'spell/divination' },
+    'enchantment': { colour: '#58180d', icon: 'spell/enchantment' },
+    'evocation': { colour: '#58180d', icon: 'spell/evocation' },
+    'illusion': { colour: '#58180d', icon: 'spell/illusion' },
+    'necromancy': { colour: '#58180d', icon: 'spell/necro' },
+    'transmutation': { colour: '#58180d', icon: 'spell/transmutation' },
+
+    // classes
+    'artificer': { colour: '#58180d', icon: 'class/artificer' },
+    'barbarian': { colour: '#58180d', icon: 'class/barbarian' },
+    'bard': { colour: '#58180d', icon: 'class/bard' },
+    'cleric': { colour: '#58180d', icon: 'class/cleric' },
+    'druid': { colour: '#58180d', icon: 'class/druid' },
+    'fighter': { colour: '#58180d', icon: 'class/fighter' },
+    'monk': { colour: '#58180d', icon: 'class/monk' },
+    'paladin': { colour: '#58180d', icon: 'class/paladin' },
+    'ranger': { colour: '#58180d', icon: 'class/ranger' },
+    'rogue': { colour: '#58180d', icon: 'class/rogue' },
+    'sorcerer': { colour: '#58180d', icon: 'class/sorcerer' },
+    'warlock': { colour: '#58180d', icon: 'class/warlock' },
+    'wizard': { colour: '#58180d', icon: 'class/wizard' },
+};
