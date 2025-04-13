@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Boblin's Deck of Many Things",
+    "version": "1.0",
+    "description": "Boblin haves many spells. Too many spells to 'member! But Boblin like cards. Boblin like cards very lot! Except for time when cards kill frends and make S'brina sad... Boblin no like that. But Boblin like cards! And now Boblin spells are cards!!",
+    "action": {
+        "default_popup": "popup/index.html",
+        "default_icon": {
+            "48": "./icon.jpg"
+        },
+        "default_title": "Spellbinder"
+    },
+    "permissions": [
+        "scripting",
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://www.dndbeyond.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.dndbeyond.com/*"
+            ],
+            "js": [
+                "inject/main.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "icons": {
+        "48": "/icon.jpg"
+    }
+}
