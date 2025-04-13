@@ -26,7 +26,6 @@ export function parseKeywords(text: string): React.ReactNode {
         let keyword = keywordMap[word.toLowerCase()];
         if (!keyword) {
             const match = word.match(/d(4|6|8|10|12|20)/);
-            console.log(match);
             if (match) keyword = keywordMap[match[0]];
         }
 

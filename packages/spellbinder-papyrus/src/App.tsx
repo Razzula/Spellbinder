@@ -1,6 +1,6 @@
-import Card from './Card'
+import { Card } from 'spellbinder'
 
-import './App.css'
+// import './App.css'
 
 function App() {
 

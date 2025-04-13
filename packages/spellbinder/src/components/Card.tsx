@@ -1,5 +1,5 @@
-import ScaledName from './components/ScaledName';
-import { parseMarkdown } from './utils';
+import ScaledName from './ScaledName';
+import { parseMarkdown } from '../utils';
 
 import './Card.css';
 

@@ -1,12 +1,29 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import svgr from 'vite-plugin-svgr'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import path from 'path'
 
-import svgr from 'vite-plugin-svgr';
+const isDev = process.argv.some((arg) => arg.includes('dev') || arg.includes('serve'))
 
-// https://vitejs.dev/config/
 export default defineConfig({
+    root: isDev ? path.resolve(__dirname, 'dev') : undefined,
     plugins: [
         react(),
         svgr(),
+        cssInjectedByJsPlugin(),
     ],
+    build: !isDev
+        ? {
+            lib: {
+                entry: path.resolve(__dirname, 'src/index.tsx'),
+                name: 'Spellbinder',
+                fileName: (format) => `spellbinder.${format}.js`,
+                formats: ['es', 'cjs']
+            },
+            rollupOptions: {
+                external: ['react', 'react-dom']
+            }
+        }
+        : undefined
 })

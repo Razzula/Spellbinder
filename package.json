@@ -1,6 +1,9 @@
 {
     "name": "spellbinder-monorepo",
     "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
         "dev": "bun --cwd packages/spellbinder dev",
         "build": "bun --cwd packages/spellbinder build"
