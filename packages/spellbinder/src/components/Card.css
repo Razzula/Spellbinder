@@ -95,16 +95,6 @@
     color: black;
 }
 
-.hr {
-    mask-image: url('/stat-block-header-bar.svg');
-    -webkit-mask-image: url('/stat-block-header-bar.svg');
-    mask-repeat: no-repeat;
-    background-color: var(--accentColour);
-    width: 100%;
-    height: 8px;
-    /* margin: 4px 0; */
-}
-
 .components {
     display: flex;
     flex-direction: column;

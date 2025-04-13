@@ -1,6 +1,8 @@
 import ScaledName from './ScaledName';
 import { parseMarkdown } from '../utils';
 
+import FancyHR from './FancyHR';
+
 import './Card.css';
 
 type CardProps = {
@@ -109,7 +111,7 @@ export default function Card({
                 </div>
             )}
 
-            <div className='hr' />
+            <FancyHR />
 
             <div className='row'>
                 <div className='meta major'>
@@ -193,7 +195,7 @@ export default function Card({
                 </>
             }
 
-            <div className='hr' />
+            <FancyHR />
 
             {/* FOOTER */}
             {higherLevel &&
