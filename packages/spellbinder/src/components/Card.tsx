@@ -4,43 +4,34 @@ import { parseMarkdown } from '../utils';
 import FancyHR from './FancyHR';
 
 import './Card.css';
+import { Ability } from '../types';
+import Icon from '../assets/icons/icons';
 
-type CardProps = {
-    type: 'spell' | 'ability';
-    name: string;
-    level?: number;
-    castingTime: string;
-    school: string;
-    description: string[];
-    meta?: MetaProps;
-    higherLevel?: string;
-    components?: ComponentProps;
-    source?: string;
+type CardProps = Ability & {
+    keywordColour?: string;
+    backgroundColour?: string;
+    blendColour?: string;
+    borderColour?: string;
 };
 
-type MetaProps = {
-    range?: string;
-    area?: string;
-    save?: string;
-    dc?: string;
-    attack?: string;
-    damage?: {
-        type: string;
-        amount: string;
-    };
-    duration?: string;
-    effect?: string;
-};
+export function CardFactory(ability: Ability): JSX.Element {
+    return (
+        <Card
+            type={ability.type}
+            name={ability.name}
+            castingTime={ability.castingTime}
+            school={ability.school}
+            description={ability.description}
+            meta={ability.meta}
+            level={ability.level}
+            components={ability.components}
+            higherLevel={ability.higherLevel}
+            source={ability.source}
+        />
+    );
+}
 
-type ComponentProps = {
-    verbal?: boolean;
-    somatic?: boolean;
-    material?: string;
-    ritual?: boolean;
-    concentration?: boolean;
-};
-
-export default function Card({
+export function Card({
     type,
     name,
     level,
@@ -51,6 +42,11 @@ export default function Card({
     higherLevel,
     components,
     source,
+
+    keywordColour = '#58180d',
+    backgroundColour = '#fdf1dc',
+    blendColour = '#d2ba88',
+    borderColour = '#a5792a',
 }: CardProps) {
 
     const fillerWords = ['of', 'the', 'and', 'in', 'on', 'at', '&'];
@@ -63,7 +59,11 @@ export default function Card({
     return (
         <div className='coreblock'
             style={{
-                '--accentColour': `var(--${type}-colour)`
+                '--backgroundColour': backgroundColour,
+                '--keywordColour': keywordColour,
+                '--accentColour': `var(--${type}-colour)`,
+                '--blendColour': blendColour,
+                '--borderColour': borderColour,
             } as React.CSSProperties}
         >
 
@@ -93,9 +93,9 @@ export default function Card({
                 {components &&
                     <div className='components'>
                         <div>
-                            {components.verbal && <span className='verbal'>V</span>}
-                            {components.somatic && <span className='somatic'>S</span>}
-                            {components.material && <span className='material'>M</span>}
+                            <span className='verbal'>{ components.verbal ? 'V' : ' ' }</span>
+                            <span className='somatic'>{ components.somatic ? 'S' : ' ' }</span>
+                            <span className='material'>{ components.material ? 'M' : ' ' }</span>
                         </div>
                         <div>
                             {components.ritual && <span className='ritualIcon'>R</span>}
@@ -114,8 +114,27 @@ export default function Card({
             <FancyHR />
 
             <div className='row'>
-                <div className='meta major'>
-                    {castingTime}
+                <div className='row'>
+                    <div className='meta major'>
+                        <Icon
+                            name={`razzula/action/${castingTime.type.toLowerCase()}`}
+                            style={{
+                                display: 'inline-block',
+                                height: '1em',
+                                width: '1em',
+                                verticalAlign: '-0.125em',
+                            }}
+                        />
+                        {castingTime.type}
+                    </div>
+                    <div className='meta' style={{
+                        marginLeft: '0.2em',
+                    }}>
+                        { castingTime.time && <span className='minor'> ({castingTime.time})</span>}
+                        { !castingTime.time && (['Action', 'Bonus Action', 'Reaction'].includes(castingTime.type)) &&
+                            <span> (<Icon name='intrinsical/action/instantaneous' />)</span>
+                        }
+                    </div>
                 </div>
                 <div className='meta minor'>
                     {parseMarkdown(school)}
@@ -135,7 +154,7 @@ export default function Card({
 
             {meta &&
                 <>
-                    <div className='hr' />
+                    <FancyHR />
 
                     <div className='metablock'>
                         {/* metadata */}
@@ -200,9 +219,11 @@ export default function Card({
             {/* FOOTER */}
             {higherLevel &&
                 // upcasting information
-                <div className='submetablock'>* {higherLevel}</div>
+                <div className='submetablock'>* {parseMarkdown(higherLevel)}</div>
             }
 
         </div>
     );
 }
+
+export default Card;

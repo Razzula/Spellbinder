@@ -38,7 +38,7 @@ export function parseKeywords(text: string): React.ReactNode {
             }
             chunks.push(
                 <span key={i} style={{ color: keyword.colour ?? 'inherit' }}>
-                    {trueWord}{keyword.icon &&
+                    {trueWord}{keyword.icon ?
                         <Icon
                             name={keyword.icon}
                             className='icon'
@@ -48,6 +48,7 @@ export function parseKeywords(text: string): React.ReactNode {
                                 fill: keyword.colour ?? 'inherit',
                             }}
                         />
+                        : ' ' // if no icon, add a space
                     }
                 </span>
             );

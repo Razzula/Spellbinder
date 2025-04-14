@@ -20,7 +20,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://www.dndbeyond.com/*"
+                "https://www.dndbeyond.com/characters*"
             ],
             "js": [
                 "inject/main.js"
