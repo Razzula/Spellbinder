@@ -22,6 +22,7 @@ export function parseKeywords(text: string): React.ReactNode {
 
     words.forEach((trueWord, i) => {
         const word = trueWord.toLowerCase().replace(/[^a-z0-9]/g, '');
+        trueWord = trueWord.replace(/\^/g, '*');
 
         let keyword = keywordMap[word.toLowerCase()];
         if (!keyword) {
@@ -29,7 +30,12 @@ export function parseKeywords(text: string): React.ReactNode {
             if (match) keyword = keywordMap[match[0]];
         }
 
-        if (keyword) {
+        if (trueWord[0] === '#') {
+            //a special marker to avoid parsing the word as a keyword
+            chunk += trueWord.slice(1) + ' ';
+        }
+        else if (keyword) {
+            // parse the keyword
             if (chunk) {
                 chunks.push(
                     <span>{chunk}</span>

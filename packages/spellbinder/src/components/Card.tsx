@@ -192,7 +192,7 @@ export function Card({
                         }
                         {meta?.attack &&
                             <div>
-                                <strong>Attack:</strong> {meta?.attack}
+                                <strong>Attack:</strong> {parseMarkdown(meta?.attack)}
                             </div>
                         }
                         {meta?.damage &&
@@ -202,7 +202,7 @@ export function Card({
                         }
                         {meta?.effect &&
                             <div>
-                                <strong>Effect:</strong> {meta?.effect}
+                                <strong>Effect:</strong> {parseMarkdown(meta?.effect)}
                             </div>
                         }
                         {components?.material &&

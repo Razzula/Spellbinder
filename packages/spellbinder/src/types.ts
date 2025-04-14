@@ -7,7 +7,7 @@ export type Ability = {
     };
     school: string;
     description: string[];
-    meta: {
+    meta?: {
         range?: string;
         area?: string;
         save?: string;
