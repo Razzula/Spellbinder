@@ -7,7 +7,7 @@ import '../src/core.css'
 function App() {
 
     return (
-        <div className='main' style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+        <div className='main' style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', padding: '0.2rem' }}>
 
             {
                 Object.keys(abilities).map((key) => {

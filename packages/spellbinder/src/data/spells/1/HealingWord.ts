@@ -7,12 +7,14 @@ const healingWord: Ability = {
         type: 'Bonus Action',
     },
     school: 'Healing (Abjuration)',
-    description: [
-        'A creature of your choice that you can see within range regains Hit Points equal to 2d4* plus your spellcasting ability modifier.',
-    ],
+    description: {
+        body:[
+            'A creature of your choice that you can see within range regains Hit Points equal to 2d4* plus your spellcasting ability modifier.',
+        ],
+    },
     meta: {
         range: '60 ft.',
-        effect: '2*d4 + spellcasting modifier HP',
+        effect: '2d4* + spellcasting modifier HP',
     },
     level: 1,
     components: {

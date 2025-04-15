@@ -12,8 +12,8 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'thunder': { colour: 'blue', icon: 'intrinsical/damage/thunder' },
 
     'bludgeoning': { colour: 'grey', icon: 'intrinsical/damage/bludgeoning' },
-    'slashing': { colour: 'silver', icon: 'intrinsical/damage/slashing' },
-    'piercing': { colour: 'darkgrey', icon: 'intrinsical/damage/piercing' },
+    'slashing': { colour: 'grey', icon: 'intrinsical/damage/slashing' },
+    'piercing': { colour: 'grey', icon: 'intrinsical/damage/piercing' },
 
     // conditions
     'blinded': { colour: 'red', icon: 'intrinsical/condition/blinded' },

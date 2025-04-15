@@ -7,11 +7,13 @@ const fireball: Ability = {
         type: 'Action',
     },
     school: 'Fire (Evocation)',
-    description: [
-        '*A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion.*',
-        'Each creature in a **20ft-radius Sphere**, centered on that point, must make a **Dexterity saving throw**. A creature takes **half damage** on a **successful save**.',
-        'Flammable objects in the area that aren’t being worn or carried start burning.',
-    ],
+    description: {
+        flavour: '*A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion.*',
+        body:[
+            'Each creature in a **20ft-radius Sphere**, centered on that point, must make a **Dexterity saving throw**. A creature takes **half damage** on a **successful save**.',
+            'Flammable objects in the area that aren\'t being worn or carried start burning.',
+        ],
+    },
     meta: {
         range: '150 ft.',
         area: '20 ft. radius sphere',

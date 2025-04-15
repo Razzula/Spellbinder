@@ -82,7 +82,7 @@ export function Card({
                                     <span className='restChars'>{word.toUpperCase()}</span>
                                 ) : (
                                     <>
-                                        <span className='firstChar'>{word[0].toUpperCase()}</span>
+                                        <span className={ word[0] !== '(' ? 'firstChar' : 'restChars' }>{word[0].toUpperCase()}</span>
                                         <span className='restChars'>{word.slice(1).toUpperCase()}</span>
                                     </>
                                 )}{' '}
@@ -143,8 +143,13 @@ export function Card({
 
             {/* BODY */}
             <div className='description'>
+                { description.flavour &&
+                    <div className='descriptionLine flavour'>
+                        {parseMarkdown(description.flavour)}
+                    </div>
+                }
                 {
-                    description.map((line, i) => (
+                    description.body.map((line, i) => (
                         <div key={i} className='descriptionLine'>
                             {parseMarkdown(line)}
                         </div>

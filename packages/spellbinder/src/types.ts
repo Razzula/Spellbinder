@@ -2,11 +2,14 @@ export type Ability = {
     type: 'spell' | 'ability';
     name: string;
     castingTime: {
-        type: 'Action' | 'Bonus Action' | 'Reaction' | 'Feat' | 'Free';
+        type: 'Action' | 'Bonus Action' | 'Reaction' | 'Feat' | 'Free' | 'Rider Effect';
         time?: string;
     };
     school: string;
-    description: string[];
+    description: {
+        flavour?: string;
+        body: string[];
+    };
     meta?: {
         range?: string;
         area?: string;

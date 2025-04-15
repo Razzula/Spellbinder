@@ -7,9 +7,11 @@ const cureWounds: Ability = {
         type: 'Action',
     },
     school: 'Healing (Abjuration)',
-    description: [
-        'A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting ability modifier.',
-    ],
+    description: {
+        body:[
+            'A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting ability modifier.',
+        ],
+    },
     meta: {
         range: 'Touch',
         effect: '2d8* + spellcasting modifier HP',
