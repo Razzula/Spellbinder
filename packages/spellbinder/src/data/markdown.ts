@@ -93,9 +93,9 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'wizard': { colour: 'blue', icon: 'intrinsical/class/wizard' },
 
     // misc.
-    'proficiency': { colour: 'green', icon: 'intrinsical/misc/proficiency' },
-    'proficient': { colour: 'green', icon: 'intrinsical/misc/proficient' },
-    'expertise': { colour: 'green', icon: 'intrinsical/misc/expertise' },
+    'proficiency': { colour: 'green', icon: 'intrinsical/proficiency/proficient' },
+    'proficient': { colour: 'green', icon: 'intrinsical/proficiency/proficient' },
+    'expertise': { colour: 'green', icon: 'intrinsical/proficiency/expertise' },
 
     'successful': { colour: 'green' },
     'failed': { colour: 'red' },
