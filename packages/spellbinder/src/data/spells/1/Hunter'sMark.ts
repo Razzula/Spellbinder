@@ -6,10 +6,10 @@ const huntersMark: Ability = {
     castingTime: {
         type: 'Bonus Action',
     },
-    school: ' Force (Divination)',
+    school: ' Force Divination',
     description: {
+        flavour: 'You magically mark one creature you can see within range as your quarry.',
         body:[
-            'You magically mark one creature you can see within range as your quarry.',
             'Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.',
             'If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action to move the mark to a new creature you can see within range.',
         ],

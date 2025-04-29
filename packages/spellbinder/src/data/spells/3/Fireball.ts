@@ -6,7 +6,7 @@ const fireball: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Fire (Evocation)',
+    school: 'Fire Evocation',
     description: {
         flavour: '*A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion.*',
         body:[

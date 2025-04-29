@@ -2,7 +2,7 @@ export type Ability = {
     type: 'spell' | 'ability';
     name: string;
     castingTime: {
-        type: 'Action' | 'Bonus Action' | 'Reaction' | 'Feat' | 'Free' | 'Rider Effect';
+        type: 'Action' | 'Bonus Action' | 'Reaction' | 'Feat' | 'Free' | 'Rider Effect' | 'Response' ;
         time?: string;
     };
     school: string;

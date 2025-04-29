@@ -6,11 +6,11 @@ const animalFriendship: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Charmed (Enchantment)',
+    school: 'Charmed Enchantment',
     description: {
         body:[
             'Target a^ Beast that you can see within range. The target must succeed on a Wisdom saving throw or have the Charmed condition for the duration.',
-            'If you or one of your allies deals damage to the target, the spells ends.',
+            'If you or one of your allies deals damage to the target, the spell ends.',
         ],
     },
     meta: {

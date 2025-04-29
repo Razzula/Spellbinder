@@ -16,7 +16,7 @@ const opportunityAttack: Ability = {
     meta: {
         attack: 'melee weapon attack',
     },
-    source: 'Free Rules (2024), pg. ???',
+    source: 'Player\'s Handbook (2024), pg. 51',
 };
 
 export default opportunityAttack;

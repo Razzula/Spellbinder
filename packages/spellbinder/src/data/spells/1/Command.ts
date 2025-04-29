@@ -6,7 +6,7 @@ const command: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Prone (Enchantment)',
+    school: 'Prone Enchantment',
     description: {
         body:[
             'Speak a one-word command to a^ creature you can see within range. The target must succeed on a **Wisdom saving throw** or follow the command on its next turn.',
@@ -14,7 +14,7 @@ const command: Ability = {
             '**Drop**: drop whatever it\'s holding and then ends its turn.',
             '**Flee**: spend its turn moving away from you by the fastest available means.',
             '**Grovel**: target has the Prone condition and then ends its turn.',
-            '**Halt**: onits turn, the target neither moves nor take any Actions or Bonus Actions.',
+            '**Halt**: on its turn, the target neither moves nor take any Actions or Bonus Actions.',
         ],
     },
     meta: {

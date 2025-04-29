@@ -19,7 +19,7 @@ const bardicInspiration: Ability = {
         range: '60 ft.',
     },
     higherLevel: 'your Bardic Inspiration die changes as your Bard level increases: becomming a d8 (5th), a d10 (10th), and a d12 (15th).',
-    source: 'Free Rules (2024), pg. ???',
+    source: 'Player\'s Handbook (2024), pg. 59'
 };
 
 export default bardicInspiration;

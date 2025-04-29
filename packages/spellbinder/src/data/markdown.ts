@@ -32,9 +32,9 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'stunned': { colour: 'red', icon: 'intrinsical/condition/stunned' },
     'unconscious': { colour: 'red', icon: 'intrinsical/condition/unconscious' },
 
-    'immunity': { colour: 'green', icon: 'intrinsical/condition/immunity' },
-    'resistance': { colour: 'green', icon: 'intrinsical/condition/resistance' },
-    'vulnerability': { colour: 'red', icon: 'intrinsical/condition/vulnerability' },
+    'immunity': { colour: 'green', icon: 'intrinsical/damage/immunity' },
+    'resistance': { colour: 'green', icon: 'intrinsical/damage/resistance' },
+    'vulnerability': { colour: 'red', icon: 'intrinsical/damage/vulnerability' },
 
     // area of effect https://www.dndbeyond.com/sources/dnd/phb-2024/rules-glossary#AreaofEffect
     'circle': { colour: 'var(--keywordColour)', icon: 'intrinsical/target/circle' },
@@ -100,4 +100,6 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'successful': { colour: 'green' },
     'failed': { colour: 'red' },
     'fails': { colour: 'red' },
+
+    'bonus': { colour: '#ffa500', icon: 'razula/action/bonus action' },
 };

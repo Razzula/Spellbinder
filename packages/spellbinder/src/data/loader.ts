@@ -17,6 +17,4 @@ const abilitiesDict: Record<string, Ability> = [...spells, ...abilities].reduce(
     return acc;
 }, {} as Record<string, Ability>);
 
-console.log(abilitiesDict);
-
 export { abilitiesDict as abilities };

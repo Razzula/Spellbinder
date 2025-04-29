@@ -6,7 +6,7 @@ const detectPoisonAndDisease: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Detection (Divination)',
+    school: 'Detection Divination',
     description: {
         body:[
             'For the duration, you sense the location of **poisons**, **poisonous or venomous creatures**, and **magical contagions** within **30 feet** of yourself. You sense the kind of poison, creature, or contagion in each case.',

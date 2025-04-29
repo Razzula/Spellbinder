@@ -43,7 +43,7 @@ export function Card({
     components,
     source,
 
-    keywordColour = '#58180d',
+    keywordColour = '#9b2818',
     backgroundColour = '#fdf1dc',
     blendColour = '#d2ba88',
     borderColour = '#a5792a',

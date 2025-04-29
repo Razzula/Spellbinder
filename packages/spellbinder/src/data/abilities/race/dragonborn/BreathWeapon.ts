@@ -6,7 +6,7 @@ const breathWeapon: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Fire (Gold Dragonborn)',
+    school: 'Fire Gold Dragonborn',
     description: {
         flavour: '*You can use your action to exhale destructive energy.*',
             body:[
@@ -17,7 +17,7 @@ const breathWeapon: Ability = {
     meta: {
         area: '15 ft. cone',
         save: 'Dexterity',
-        dc: '8 + Constitution modifier + proficiency bonus',
+        dc: '8 + Constitution modifier + proficiency #bonus',
         damage: {
             amount: '2d6*',
             type: 'Fire',

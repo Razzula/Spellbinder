@@ -6,7 +6,7 @@ const prestidigitation: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Utility (Transmutation)',
+    school: 'Utility Transmutation',
     description: {
         body:[
             'Cast a* magical trick:',

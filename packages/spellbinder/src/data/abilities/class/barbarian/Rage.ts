@@ -19,7 +19,7 @@ const rage: Ability = {
             'Regain 1 use on Short Rest, all** on Long Rest.',
         ],
     },
-    source: 'Free Rules (2024), pg. ???',
+    source: 'Player\'s Handbook (2024), pg. 51',
     higherLevel: 'cannot be wearing heavy armour; ^^ see the Barbarian Features table',
 };
 

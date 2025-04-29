@@ -6,7 +6,7 @@ const healingWord: Ability = {
     castingTime: {
         type: 'Bonus Action',
     },
-    school: 'Healing (Abjuration)',
+    school: 'Healing Abjuration',
     description: {
         body:[
             'A creature of your choice that you can see within range regains Hit Points equal to 2d4* plus your spellcasting ability modifier.',

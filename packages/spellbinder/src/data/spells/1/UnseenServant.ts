@@ -6,7 +6,7 @@ const unseenServant: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Control (Conjuration)',
+    school: 'Control Conjuration',
     description: {
         body:[
             'Create an **Invisible**, **mindless**, **shapeless**, Medium **#force** that performs **simple** tasks at your command. Springing into existence in an unoccupied space on the ground, your servant has **10 AC**, **1 HP**, and **2 Strength**.',

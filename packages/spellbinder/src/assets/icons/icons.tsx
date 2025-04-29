@@ -7,8 +7,6 @@ type IconProps = {
     style?: React.CSSProperties;
 };
 
-console.log(icons); // Log the imported icons
-
 export default function Icon({ name, className = 'icon', style }: IconProps) {
     const SvgIcon = icons[`./${name}.svg`];
     if (!SvgIcon) {

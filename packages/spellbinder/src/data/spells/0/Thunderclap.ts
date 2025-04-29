@@ -6,7 +6,7 @@ const thunderclap: Ability = {
     castingTime: {
         type: 'Action',
     },
-    school: 'Thunder (Evocation)',
+    school: 'Thunder Evocation',
     description: {
         body:[
             '**Each** creature in a **5 ft.** Emanation originating from you must succeed on a **Constitution saving throw** or take 1d6* Thunder damage.',

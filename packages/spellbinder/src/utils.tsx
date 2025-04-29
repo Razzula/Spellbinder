@@ -42,6 +42,16 @@ export function parseKeywords(text: string): React.ReactNode {
                 );
                 chunk = '';
             }
+
+            // if final char of keyword is punctuation, place it after the icon
+            let post = '';
+            [',', '.', ',', '!', '?', ':', ';', ')'].forEach((p) => {
+                if (trueWord.endsWith(p)) {
+                    post += p;
+                    trueWord = trueWord.slice(0, trueWord.length - 1);
+                }
+            });
+
             chunks.push(
                 <span key={i} style={{ color: keyword.colour ?? 'inherit' }}>
                     {trueWord}{keyword.icon ?
@@ -56,6 +66,7 @@ export function parseKeywords(text: string): React.ReactNode {
                         />
                         : ' ' // if no icon, add a space
                     }
+                    {`${post} `}
                 </span>
             );
         }

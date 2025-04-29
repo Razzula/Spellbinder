@@ -6,14 +6,14 @@ const bonusUnarmedStrike: Ability = {
     castingTime: {
         type: 'Bonus Action',
     },
-    school: 'Monk (Martial Arts)',
+    school: 'Monk Martial Arts',
     description: {
-        flavour: 'Your practice of martial arts gives you mastery over the speed and precision of you unarmed combat style.',
+        flavour: 'Your practice of martial arts gives you mastery over the speed and precision of your unarmed combat style.',
         body:[
             'You can make an Unarmed Strike as a Bonus Action.',
         ],
     },
-    source: 'Player\'s Handbook (2024), pg. ???',
+    source: 'Player\'s Handbook (2024), pg. 101',
 };
 
 export default bonusUnarmedStrike;

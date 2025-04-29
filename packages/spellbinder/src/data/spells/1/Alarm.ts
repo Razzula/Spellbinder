@@ -7,7 +7,7 @@ const alarm: Ability = {
         type: 'Action',
         time: '1 minute',
     },
-    school: 'Detection (Abjuration)',
+    school: 'Detection Abjuration',
     description: {
         flavour: 'You set an alarm against intrusion.',
         body:[
