@@ -6,13 +6,13 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     position: relative;
 
     width: 250px;
     height: 350px;
     min-width: 250px;
     min-height: 350px;
+    overflow: hidden;
 }
 
 .header {
@@ -63,11 +63,13 @@
 }
 
 .description {
-    flex: 1;
+    flex: 1 1 auto;
     font-size: 10px;
     text-align: left;
     padding: 0 8px;
     text-align: center;
+
+    overflow-y: hidden;
 }
 
 .descriptionLine {

@@ -6,6 +6,7 @@ import FancyHR from './FancyHR';
 import './Card.css';
 import { Ability } from '../types';
 import Icon from '../assets/icons/icons';
+import ScaledBody from './ScaledBody';
 
 type CardProps = Ability & {
     keywordColour?: string;
@@ -142,20 +143,22 @@ export function Card({
             </div>
 
             {/* BODY */}
-            <div className='description'>
-                { description.flavour &&
-                    <div className='descriptionLine flavour'>
-                        {parseMarkdown(description.flavour)}
-                    </div>
-                }
-                {
-                    description.body.map((line, i) => (
-                        <div key={i} className='descriptionLine'>
-                            {parseMarkdown(line)}
+            <ScaledBody>
+                <div className='description'>
+                    { description.flavour &&
+                        <div className='descriptionLine flavour'>
+                            {parseMarkdown(description.flavour)}
                         </div>
-                    ))
-                }
-            </div>
+                    }
+                    {
+                        description.body.map((line, i) => (
+                            <div key={i} className='descriptionLine'>
+                                {parseMarkdown(line)}
+                            </div>
+                        ))
+                    }
+                </div>
+            </ScaledBody>
 
             {meta &&
                 <>
