@@ -23,7 +23,16 @@
                 "https://www.dndbeyond.com/characters*"
             ],
             "js": [
-                "inject/main.js"
+                "inject/ws-intercept.js"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "https://www.dndbeyond.com/characters*"
+            ],
+            "js": [
+                "inject/react-inject.js"
             ],
             "run_at": "document_idle"
         }

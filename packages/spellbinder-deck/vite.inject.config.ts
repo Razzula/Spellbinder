@@ -8,10 +8,10 @@ export default defineConfig({
         outDir: 'dist',
         emptyOutDir: false, // don't wipe popup build
         lib: {
-            entry: path.resolve(__dirname, 'inject/index.tsx'),
+            entry: path.resolve(__dirname, 'inject/react-inject.tsx'),
             name: 'InjectedUI',
             formats: ['iife'],
-            fileName: () => 'inject/main.js'
+            fileName: () => 'inject/react-inject.js'
         }
     },
     define: {
