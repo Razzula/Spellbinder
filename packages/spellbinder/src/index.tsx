@@ -1,7 +1,5 @@
-import { Card, CardFactory } from './components/Card';
-import { abilities } from './data/loader';
-
 import './core.css';
 import './components/Card.css';
 
-export { Card, CardFactory, abilities };
+export { Card, CardFactory } from './components/Card';
+export { abilities } from './data/loader';

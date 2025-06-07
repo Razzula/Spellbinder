@@ -15,7 +15,7 @@ type CardProps = Ability & {
     borderColour?: string;
 };
 
-export function CardFactory(ability: Ability): JSX.Element {
+export function CardFactory(ability: CardProps, style: any): JSX.Element {
     return (
         <Card
             type={ability.type}
@@ -28,6 +28,8 @@ export function CardFactory(ability: Ability): JSX.Element {
             components={ability.components}
             higherLevel={ability.higherLevel}
             source={ability.source}
+
+            {...style}
         />
     );
 }

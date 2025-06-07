@@ -1,5 +1,5 @@
 export type Ability = {
-    type: 'spell' | 'ability';
+    type: 'spell' | 'ability' | 'standard';
     name: string;
     castingTime: {
         type: 'Action' | 'Bonus Action' | 'Reaction' | 'Feat' | 'Free' | 'Rider Effect' | 'Response' ;
