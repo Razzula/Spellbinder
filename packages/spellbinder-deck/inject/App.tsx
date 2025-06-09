@@ -1,14 +1,27 @@
 import { useEffect, useState } from 'react';
 
 import { CardFactory, abilities } from 'spellbinder'
-import { ChatMessage, DDBGameLogMessage, DiceRollFulfilledMessage, DiceRollPendingMessage, SpellbinderMeta } from './DDBTypes';
-import { emulateDieRoll, mockChatMessage, updateDDBNotes } from './DDBUtils';
+import { CharacterSheet, ChatMessage, DDBGameLogMessage, DiceRollFulfilledMessage, DiceRollPendingMessage, SpellbinderMeta } from './DDBTypes';
+import { emulateDieRoll, fetchCharacter, mockChatMessage, updateDDBNotes } from './DDBUtils';
 
 function App() {
 
+    // data sniffed from ws-intercept.ts
     const [spellbinderWS, setSpellbinderWS] = useState<WebSocket | null>(null);
     const [spellbinderMeta, setSpellbinderMeta] = useState<SpellbinderMeta | null>(null);
     const [authToken, setAuthToken] = useState<string | null>(null);
+
+    // data fetched from DDB
+    const [characterID, setCharacterID] = useState<number | null>(null);
+    const [characterSheet, setCharacterSheet] = useState<CharacterSheet | null>(null); // JSON structure of the character sheet (provided by DDB)
+
+    // Spellbinder data
+    const [spellbinderData, setSpellbinderData] = useState<any>(null); // custom JSON structure stored in character notes, for persistence
+    
+    useEffect(() => {
+        const match = window.location.pathname.match(/\/characters\/(\d+)/);
+        setCharacterID(match ? Number(match[1]) : null);
+    }, []);
 
     useEffect(() => {
         // listen for the spellbinder-ws event to get the WebSocket instance
@@ -40,13 +53,54 @@ function App() {
     }, []);
 
     useEffect(() => {
-        if (authToken && spellbinderMeta?.entityId) {
-            const entityId: number = Number(spellbinderMeta.entityId) || 0;
-            updateDDBNotes('test from Spellbinder', entityId, authToken);
+        // fetch the character sheet from DDB
+        if (authToken && characterID) {
+            loadCharacter();
         }
     }, [authToken, spellbinderMeta]);
 
+    useEffect(() => {
+        // load embedded Spellbinder data from sheet's notes
+        if (characterSheet?.notes?.otherNotes) {
+            const otherNotes = characterSheet.notes.otherNotes;
+            try {
+                const parsedNotes = JSON.parse(otherNotes);
+                console.log('[Spellbinder] Parsed notes:', parsedNotes);
+                setSpellbinderData(parsedNotes);
+            }
+            catch (err) {
+                console.warn('[Spellbinder] Error parsing notes:', err);
+            }
+        }
+    }, [characterSheet]);
+
+    useEffect(() => {
+        // embedd Spellbinder data into character notes
+        if (!spellbinderData) return;
+        if (authToken && characterID) {
+            updateDDBNotes(JSON.stringify(spellbinderData), characterID, authToken);
+        }
+    }, [spellbinderData]);
+
+    function loadCharacter() {
+        /**
+         * Fetch the character sheet from DDB using the auth token and character ID.
+         */
+        if (authToken && characterID) {
+            fetchCharacter(characterID, authToken)
+                .then(character => {
+                    console.log('[Spellbinder] Fetched character:', character.message);
+                    console.log('[Spellbinder] Character data:', character.data);
+                    setCharacterSheet(character.data);
+                })
+                .catch(err => console.error('[Spellbinder] Error fetching character:', err));
+        }
+    }
+
     function handleButtonClick() {
+        /**
+         * Handle the button click to emulate a die roll.
+         */
         if (!spellbinderWS || !spellbinderMeta) {
             console.error('[Spellbinder] No WebSocket or metadata available');
             return;

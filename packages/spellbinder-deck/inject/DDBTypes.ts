@@ -116,3 +116,43 @@ export type SpellbinderMeta = {
     gameId: string;
     userId: string;
 };
+
+export type CharacterData = {
+    id: number;
+    userId: number;
+    username: string;
+    name: string;
+    campaign?: {
+        id: number;
+        name: string;
+        link: string;
+    };
+    notes?: {
+        otherNotes?: string;
+        allies?: string | null;
+        personalPossessions?: string | null;
+    };
+    actions?: {
+        race?: any[];
+        class?: any[];
+        background?: any;
+        feat?: any[];
+        item?: any;
+    };
+    spells?: {
+        race?: any[];
+        class?: any[];
+        background?: any;
+    };
+    inventory?: any[];
+    race?: {
+        baseRaceName?: string;
+        racialTraits?: any[];
+        description?: string;
+    };
+    features?: any[];
+    feats?: any[];
+    stats?: { id: number; value: number }[];
+    customActions?: any[];
+    inspiration?: boolean;
+}; 

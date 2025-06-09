@@ -123,6 +123,22 @@ export function mockChatMessage(
     }
 }
 
+export async function fetchCharacter(characterID: number, authToken: string) {
+    console.log(`[Spellbinder] Fetching character with ID: ${characterID}`);
+    const res = await fetch(
+        `https://character-service.dndbeyond.com/character/v5/character/${characterID}?includeCustomItems=true`,
+        {
+            method: 'GET',
+            headers: {
+                'Authorization': `${authToken}`,
+            },
+            credentials: 'include',
+        }
+    );
+
+    return res.json();
+}
+
 export async function updateDDBNotes(notes: string, characterID: number, authToken: string): Promise<Response> {
     const res = await fetch('https://character-service.dndbeyond.com/character/v5/description/notes', {
         method: 'PUT',
