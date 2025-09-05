@@ -10,7 +10,7 @@ const bardicInspiration: Ability = {
     description: {
         flavour: '*You can supernaturally inspire others through words, music, or dance.*',
         body:[
-            'As a **Bonus Action**, you can inspire **another creature** within **60 ft.** of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice (d6*). A creature can have only one of these at a time.',
+            'As a **Bonus #Action**, you can inspire **another creature** within **60 ft.** of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice (d6*). A creature can have only one of these at a time.',
             '**Once** within the next hour when the creature fails a D20 Test, the creature can roll your die and **add** the number rolled to Test, expending the die.',
             'You can confer a Bardic Inspiration die a number of times equal to your **Charisma modifier** (minimum of once), and you regain all expended uses when you finish a **Long Rest**.',
         ],

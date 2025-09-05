@@ -92,6 +92,27 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'warlock': { colour: 'orange', icon: 'intrinsical/class/warlock' },
     'wizard': { colour: 'blue', icon: 'intrinsical/class/wizard' },
 
+    // monk
+    'focus': { colour: 'darkblue', icon: 'intrinsical/class/monk' },
+
+    // standard attacks
+    'attack': { colour: 'var(--keywordColour)', },
+    'dash': { colour: 'var(--keywordColour)', },
+    'disengage': { colour: 'var(--keywordColour)', },
+    'dodge': { colour: 'var(--keywordColour)', },
+    'help': { colour: 'var(--keywordColour)', },
+    'hide': { colour: 'var(--keywordColour)', },
+    'ready': { colour: 'var(--keywordColour)', },
+    'search': { colour: 'var(--keywordColour)', },
+    'improvise': { colour: 'var(--keywordColour)', },
+    'interact': { colour: 'var(--keywordColour)', },
+    'study': { colour: 'var(--keywordColour)', },
+    'influence': { colour: 'var(--keywordColour)', },
+
+    'unarmed': { colour: 'var(--keywordColour)', }, // XXX
+    'strike': { colour: 'var(--keywordColour)', }, // XXX
+    'strikes': { colour: 'var(--keywordColour)', }, // XXX
+
     // misc.
     'proficiency': { colour: 'green', icon: 'intrinsical/proficiency/proficient' },
     'proficient': { colour: 'green', icon: 'intrinsical/proficiency/proficient' },
@@ -102,4 +123,10 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'fails': { colour: 'red' },
 
     'bonus': { colour: '#ffa500', icon: 'razula/action/bonus action' },
+    'action': { colour: 'green', icon: 'razula/action/action' },
+    'actions': { colour: 'green', icon: 'razula/action/action' },
+    'reaction': { colour: 'hotpink', icon: 'razula/action/reaction' },
+
+    'short': { colour: 'blue' },
+    'long': { colour: 'green' },
 };

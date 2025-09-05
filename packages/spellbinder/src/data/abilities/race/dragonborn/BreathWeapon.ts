@@ -11,7 +11,7 @@ const breathWeapon: Ability = {
         flavour: '*You can use your action to exhale destructive energy.*',
             body:[
             'It deals damage in a **15ft. cone**. When you use your breath weapon, all creatures in the area must make a **Dexterity saving throw**. A creature takes **half damage** on a **successful save**.',
-            'After using your breath weapon, you cannot use it again until you complete a short or long rest.',
+            'After using your breath weapon, you cannot use it again until you complete a Short or Long Rest.',
         ],
     },
     meta: {

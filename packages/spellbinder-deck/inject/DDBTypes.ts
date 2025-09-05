@@ -117,7 +117,7 @@ export type SpellbinderMeta = {
     userId: string;
 };
 
-export type CharacterData = {
+export type CharacterSheet = {
     id: number;
     userId: number;
     username: string;

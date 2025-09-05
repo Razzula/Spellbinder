@@ -8,73 +8,108 @@ function App() {
     const characters = {
         "Andreas": {
             cards: [
-                "Attack",
-                "Opportunity Attack",
-                "Two-Weapon Fighting",
+                // "Attack",
+                // "Opportunity Attack",
+                // "Two-Weapon Fighting",
                 // "Attack: Dagger",
                 // "Attack: Rapier",
                 // "Attack: Unarmed Strike",
-                "Nimble Dodge",
+                // "Nimble Dodge",
 
-                "Bardic Inspiration",
+                // "Bardic Inspiration",
 
-                "Thunderclap",
-                "Vicious Mockery",
-                "Cure Wounds",
-                "Healing Word",
-                "Command",
-                "Unseen Servant",
+                // "Thunderclap",
+                // "Vicious Mockery",
+                // "Cure Wounds",
+                // "Healing Word",
+                // "Command",
+                // "Unseen Servant",
+
+                // "Tasha's Hideous Laughter", // ?
+                // "Sleep", // ?
+                // "Dissonant Whispers", // ?
             ],
         },
         "Nim Tealeaf": {
             cards: [
-                "Attack",
-                "Opportunity Attack",
+                // "Attack",
+                // "Opportunity Attack",
                 // "Attack: Crossbow",
                 // "Attack: Dagger",
                 // "Attack: Spear",
                 // "Attack: Unarmed Strike",
-                "Initiative Swap",
-                "Luck",
+                // "Initiative Swap",
+                // "Luck",
 
-                "Bonus Unarmed Strike",
+                // "Bonus Unarmed Strike",
+
+                "Flurry of Blows",
+                "Patient Defense",
+                "Step of the Wind",
+                "Uncanny Metabolism",
             ],
         },
         "Isla Ironnee": {
             cards: [
-                "Attack",
-                "Opportunity Attack",
+                // "Attack",
+                // "Opportunity Attack",
             //     "Attack: Silvered Dagger",
             //     "Attack: Unarmed Strike",
-                "Battle Medic",
-                "Healing Rerolls",
-                "Stonecunning",
+                // "Battle Medic",
+                // "Healing Rerolls",
+                // "Stonecunning",
 
-                "Hunter's Mark",
+                // "Hunter's Mark",
 
-                "Animal Friendship",
-                "Alarm",
+                // "Animal Friendship",
+                // "Alarm",
 
-                "Nick (Dagger)",
-                "Push (Greatclub)",
+                // "Nick (Dagger)",
+                // "Push (Greatclub)",
+
+                // "Speak with Animals", //?
             ],
         },
         "Spee Dy": {
             cards: [
-                "Attack",
-                "Opportunity Attack",
+                // "Attack",
+                // "Opportunity Attack",
             //     "Attack: Handaxe",
             //     "Attack: Longbow",
             //     "Attack: Longsword",
             //     "Attack: Unarmed Strike",
-                "Initiative Swap",
+                // "Initiative Swap",
 
-                "Rage",
+                // "Rage",
 
-                "Sap (Longsword)",
-                "Slow (Longbow)",
+                // "Sap (Longsword)",
+                // "Slow (Longbow)",
+
+                "Reckless Attack",
             ],
         },
+        "Saxon": {
+            cards: [
+                "Bark of the Witans",
+                "Howl of the Barrow",
+                "Flickerstep",
+                "Blinkstep",
+                "Luminous Trail",
+                "Magical Awareness",
+            ],
+        },
+        // "404": {
+
+        // },
+        // "Baglin": {
+            
+        // },
+        // "Boblin": {
+            
+        // },
+        // "McSpuddley": {
+
+        // },
     };
 
     return (
