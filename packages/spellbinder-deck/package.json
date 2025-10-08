@@ -4,10 +4,11 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "build:pre": "bun --cwd=\"../spellbinder\" run build",
         "build:popup": "vite build --config vite.popup.config.ts",
         "build:inject-ws": "esbuild inject/ws-intercept.ts --bundle --target=es2020 --outfile=dist/inject/ws-intercept.js",
         "build:inject-react": "vite build --config vite.inject.config.ts",
-        "build": "tsc && bun run build:popup && bun run build:inject-ws && bun run build:inject-react"
+        "build": "tsc && bun run build:pre && bun run build:popup && bun run build:inject-ws && bun run build:inject-react"
     },
     "dependencies": {
         "spellbinder": "*",

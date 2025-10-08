@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { CardFactory, abilities } from 'spellbinder'
-import { CharacterSheet, ChatMessage, DDBGameLogMessage, DiceRollFulfilledMessage, DiceRollPendingMessage, SpellbinderMeta } from './DDBTypes';
+import { Card, CardFactory, abilities } from 'spellbinder'
+import { CharacterSheet, characterToMeta, ChatMessage, DDBGameLogMessage, DiceRollFulfilledMessage, DiceRollPendingMessage, SpellbinderMeta } from './DDBTypes';
 import { emulateDieRoll, fetchCharacter, mockChatMessage, updateDDBNotes } from './DDBUtils';
 
 function App() {
@@ -26,7 +26,10 @@ function App() {
     useEffect(() => {
         // listen for the spellbinder-ws event to get the WebSocket instance
         const handler = (e: CustomEvent) => {
-            setSpellbinderWS(e.detail);
+            if (spellbinderWS !== e.detail) {
+                console.log('[Spellbinder] Received spellbinder WS:', e.detail);
+                setSpellbinderWS(e.detail);
+            }
         };
         window.addEventListener('spellbinder-ws', handler as EventListener);
         return () => window.removeEventListener('spellbinder-ws', handler as EventListener);
@@ -35,8 +38,10 @@ function App() {
     useEffect(() => {
         // listen for the spellbinder-meta event to get the metadata
         const handler = (e: CustomEvent) => {
-            console.log('[Spellbinder] Received spellbinder meta:', e.detail);
-            setSpellbinderMeta(e.detail);
+            if (spellbinderMeta !== e.detail) {
+                console.log('[Spellbinder] Received spellbinder meta:', e.detail);
+                // setSpellbinderMeta(e.detail);
+            }
         };
         window.addEventListener('spellbinder-meta', handler as EventListener);
         return () => window.removeEventListener('spellbinder-meta', handler as EventListener);
@@ -45,8 +50,10 @@ function App() {
     useEffect(() => {
         // listen for the spellbinder-auth event to get the auth token
         const handler = (e: CustomEvent) => {
-            console.log('[Spellbinder] Received DDB auth token:', e.detail);
-            setAuthToken(e.detail);
+            if (e.detail !== authToken) {
+                console.log('[Spellbinder] Received DDB auth token:', e.detail);
+                setAuthToken(e.detail);
+            }
         };
         window.addEventListener('spellbinder-auth', handler as EventListener);
         return () => window.removeEventListener('spellbinder-auth', handler as EventListener);
@@ -57,7 +64,7 @@ function App() {
         if (authToken && characterID) {
             loadCharacter();
         }
-    }, [authToken, spellbinderMeta]);
+    }, [authToken, characterID]);
 
     useEffect(() => {
         // load embedded Spellbinder data from sheet's notes
@@ -92,6 +99,7 @@ function App() {
                     console.log('[Spellbinder] Fetched character:', character.message);
                     console.log('[Spellbinder] Character data:', character.data);
                     setCharacterSheet(character.data);
+                    setSpellbinderMeta(characterToMeta(character.data));
                 })
                 .catch(err => console.error('[Spellbinder] Error fetching character:', err));
         }
@@ -111,6 +119,26 @@ function App() {
         );
     }
 
+    console.log(`[Spellbinder] ${JSON.stringify(abilities['Fireball'], null, 2)}`);
+    const test = CardFactory(abilities['Fireball']);
+    console.log('[Spellbinder] Test card:', test);
+
+    const test2 = <Card
+        type='ability'
+        name='Test'
+        castingTime={{
+            type: 'Action',
+        }}
+        school=''
+        description={{
+            body:[
+                '',
+            ],
+        }}
+        source=''
+    />;
+    console.log('[Spellbinder] Test2 card:', test2);
+
     return (
         <div
             id='spellbinderApp'
@@ -128,7 +156,8 @@ function App() {
                 className='leftPanel'
                 style={{ pointerEvents: 'auto', maxWidth: '20%', minWidth: '250px' }}
             >
-                {/* {CardFactory(abilities['Breath Weapon'])} */}
+                Test
+                {test}
             </div>
 
             <div

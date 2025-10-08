@@ -29,7 +29,7 @@ export function CardFactory(ability: CardProps, style: any): JSX.Element {
             higherLevel={ability.higherLevel}
             source={ability.source}
 
-            // {...style}
+            {...style}
         />
     );
 }

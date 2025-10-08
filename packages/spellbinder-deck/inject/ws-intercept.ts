@@ -77,7 +77,7 @@ injectPageScript(`(${(() => {
                 // tag the parsed data
                 if (parsed?.data?.context?.name) {
                     parsed.data.setId = 'spellbinder-modified';
-                    parsed.data.context.name = `${parsed.data.context.name} (using Spellbinder)`;
+                    parsed.data.context.name = `${parsed.data.context.name} ⇐ Spellbinder`;
                 }
 
                 // replace data with modified version

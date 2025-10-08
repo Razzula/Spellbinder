@@ -87,6 +87,8 @@ export function emulateDieRoll(
     spellbinderWS.send(
         JSON.stringify(fulfilled)
     );
+
+    alert(`Rolled a ${dieType}: ${fulfilled.data.rolls[0].result?.text}`);
 }
 
 export function mockChatMessage(

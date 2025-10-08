@@ -155,4 +155,16 @@ export type CharacterSheet = {
     stats?: { id: number; value: number }[];
     customActions?: any[];
     inspiration?: boolean;
+    decorations?: {
+        avatarUrl?: string;
+    };
 }; 
+
+export const characterToMeta = (char: CharacterSheet): SpellbinderMeta => ({
+    entityId: char.id.toString(),
+    entityType: 'character',
+    name: char.name,
+    avatarUrl: char.decorations?.avatarUrl || undefined,
+    gameId: char.campaign?.id.toString() || '',
+    userId: char.userId.toString(),
+});
