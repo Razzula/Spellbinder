@@ -4,7 +4,7 @@ export const keywordMap: Record<string, { colour?: string; icon?: string }> = {
     'cold': { colour: 'cyan', icon: 'intrinsical/damage/cold' },
     'fire': { colour: 'red', icon: 'intrinsical/damage/fire' },
     'force': { colour: 'purple', icon: 'intrinsical/damage/force' },
-    'lightning': { colour: 'yellow', icon: 'intrinsical/damage/lightning' },
+    'lightning': { colour: '#cb8747', icon: 'intrinsical/damage/lightning' },
     'necrotic': { colour: 'black', icon: 'intrinsical/damage/necrotic' },
     'poison': { colour: 'darkgreen', icon: 'intrinsical/damage/poison' },
     'psychic': { colour: 'magenta', icon: 'intrinsical/damage/psychic' },

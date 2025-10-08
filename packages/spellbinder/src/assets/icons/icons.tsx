@@ -1,5 +1,5 @@
 // dynamically import in-line SVG components
-const icons = import.meta.glob('./**/*.svg', { query:'?react', eager: true, import: 'default' });
+const icons = import.meta.glob('./**/*.svg', { query: '?react', eager: true, import: 'default' });
 
 type IconProps = {
     name: string;
