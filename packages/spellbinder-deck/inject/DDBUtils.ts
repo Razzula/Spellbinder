@@ -22,7 +22,7 @@ export function emulateDieRoll(
             context: {
                 entityId: spellbinderMeta.entityId,
                 entityType: spellbinderMeta.entityType,
-                name: `${spellbinderMeta.name} (using Spellbinder)`,
+                name: `${spellbinderMeta.name} ⇐ Spellbinder`,
                 avatarUrl: spellbinderMeta.avatarUrl,
                 messageScope: 'gameId',
                 messageTarget: spellbinderMeta.gameId

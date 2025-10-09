@@ -4,7 +4,19 @@ import { Card, CardFactory, abilities } from 'spellbinder'
 import { CharacterSheet, characterToMeta, ChatMessage, DDBGameLogMessage, DiceRollFulfilledMessage, DiceRollPendingMessage, SpellbinderMeta } from './DDBTypes';
 import { emulateDieRoll, fetchCharacter, mockChatMessage, updateDDBNotes } from './DDBUtils';
 
-function App() {
+export type Port = {
+    name: string;
+    postMessage: (msg: any) => void;
+    onMessage: { addListener(fn: (msg: any) => void): void };
+    onDisconnect: { addListener(fn: () => void): void };
+    disconnect(): void;
+};
+
+export type AppProps = {
+    port: Port;
+};
+
+function App({ port }: AppProps) {
 
     // data sniffed from ws-intercept.ts
     const [spellbinderWS, setSpellbinderWS] = useState<WebSocket | null>(null);
@@ -60,6 +72,15 @@ function App() {
     }, []);
 
     useEffect(() => {
+        // listen for the spellbinder:message event
+        const handler = (e: CustomEvent) => {
+            console.log('[Spellbinder] Received message from popup:', e.detail);
+        };
+        window.addEventListener('spellbinder:message', handler as EventListener);
+        return () => window.removeEventListener('spellbinder:message', handler as EventListener);
+    }, []);
+
+    useEffect(() => {
         // fetch the character sheet from DDB
         if (authToken && characterID) {
             loadCharacter();
@@ -83,9 +104,18 @@ function App() {
 
     useEffect(() => {
         // embedd Spellbinder data into character notes
-        if (!spellbinderData) return;
+        if (!spellbinderData) {
+            return;
+        }
         if (authToken && characterID) {
+            // save to D&DBeyond
             updateDDBNotes(JSON.stringify(spellbinderData), characterID, authToken);
+        }
+        if (port) {
+            port.postMessage({
+                type: 'spellbinder:spellbinderData',
+                payload: spellbinderData,
+            });
         }
     }, [spellbinderData]);
 
@@ -119,26 +149,6 @@ function App() {
         );
     }
 
-    console.log(`[Spellbinder] ${JSON.stringify(abilities['Fireball'], null, 2)}`);
-    const test = CardFactory(abilities['Fireball']);
-    console.log('[Spellbinder] Test card:', test);
-
-    const test2 = <Card
-        type='ability'
-        name='Test'
-        castingTime={{
-            type: 'Action',
-        }}
-        school=''
-        description={{
-            body:[
-                '',
-            ],
-        }}
-        source=''
-    />;
-    console.log('[Spellbinder] Test2 card:', test2);
-
     return (
         <div
             id='spellbinderApp'
@@ -157,7 +167,7 @@ function App() {
                 style={{ pointerEvents: 'auto', maxWidth: '20%', minWidth: '250px' }}
             >
                 Test
-                {test}
+                {CardFactory(abilities['Fireball'])}
             </div>
 
             <div
@@ -181,8 +191,24 @@ function App() {
                     onClick={handleButtonClick}
                     disabled={!spellbinderWS || !spellbinderMeta}
                 >
-                    Magic Button!
+                    Roll d20!
                 </button>
+
+                {/* <button
+                    className='floatingButton'
+                    style={{
+                        position: 'absolute',
+                        bottom: '1rem',
+                        right: '1rem',
+                        zIndex: 10000,
+                    }}
+                    onClick={() => setSpellbinderData({
+                        origin: 'button',
+                    })}
+                    disabled={!spellbinderWS || !spellbinderMeta}
+                >
+                    Write Notes!
+                </button> */}
             </div>
         </div>
     );

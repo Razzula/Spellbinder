@@ -15,9 +15,9 @@ type CardProps = Ability & {
     borderColour?: string;
 };
 
-export function CardFactory(ability: CardProps, style: any): JSX.Element {
+export function CardFactory(ability: CardProps, style?: any): JSX.Element {
     return (
-        <Card
+        <Card   
             type={ability.type}
             name={ability.name}
             castingTime={ability.castingTime}

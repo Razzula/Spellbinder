@@ -8,7 +8,8 @@
         "build:popup": "vite build --config vite.popup.config.ts",
         "build:inject-ws": "esbuild inject/ws-intercept.ts --bundle --target=es2020 --outfile=dist/inject/ws-intercept.js",
         "build:inject-react": "vite build --config vite.inject.config.ts",
-        "build": "tsc && bun run build:pre && bun run build:popup && bun run build:inject-ws && bun run build:inject-react"
+        "build:background": "vite build --config vite.background.config.ts",
+        "build": "tsc && bun run build:pre && bun run build:popup && bun run build:inject-ws && bun run build:inject-react && bun run build:background"
     },
     "dependencies": {
         "spellbinder": "*",
