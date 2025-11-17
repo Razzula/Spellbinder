@@ -157,3 +157,22 @@ export async function updateDDBNotes(notes: string, characterID: number, authTok
 
     return res;
 }
+
+export async function updateCharacterClass(authToken: string, characterID: number, classID: number, classLevel: number = 1): Promise<Response> {
+    const res = await fetch('https://character-service.dndbeyond.com/character/v5/class', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${authToken}`,
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+            characterId: characterID,
+            classId: classID,
+            level: classLevel,
+        }),
+    });
+
+    return res;
+}
+

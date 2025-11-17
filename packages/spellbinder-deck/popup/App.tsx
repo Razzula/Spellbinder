@@ -16,20 +16,47 @@ function App() {
 
     const [port, setPort] = useState<Port | null>(null);
 
+    const [spellbinderData, setSpellbinderData] = useState<any>(null); // custom JSON structure stored in character notes, for persistence
+
     useEffect(() => {
         ensurePort();
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (port) {
-            port.onMessage.addListener((msg: any) => {
-                // msg is whatever popup sent as payload
+            // popup --> injection
+            const forwardToInjected = (msg: any) => {
                 window.dispatchEvent(new CustomEvent('spellbinder:message', { detail: msg }));
-            });
+            };
+            port.onMessage.addListener(forwardToInjected);
+
+            // injection --> popup
+            const handleIncoming = (msg: any) => {
+                console.log('[Spellbinder] Received message from injection:', msg);
+                if (msg) {
+                    const payload = msg?.payload;
+                    if (payload) {
+                        if (msg.type === 'spellbinder:spellbinderData') {
+                            setSpellbinderData(payload);
+                        }
+                    }
+
+                }
+            };
+            port.onMessage.addListener(handleIncoming);
+
+            // cleanup listener
+            return () => {
+                // @ts-ignore
+                port.onMessage.removeListener?.(forwardToInjected);
+                // @ts-ignore
+                port.onMessage.removeListener?.(handleIncoming);
+            };
         }
-    }, [port])
+    }, [port]);
 
     async function ensurePort() {
+        // PORT AS SINGLETON
         if (port) {
             return port;
         }
@@ -52,18 +79,23 @@ function App() {
         });
     }
 
+    console.log('Test from popup');
+
     return (
         <>
-            <span>
-                { port ? 'Port connected' : 'Port is null.' }
-            </span>
             <h3>
                 Boblin haves many spells. Too many spells to 'member!
                 But Boblin like cards. Boblin like cards very lot!
                 Except for time when cards kill frends and make S'brina sad... Boblin no like that.
                 But Boblin like cards! And now Boblin spells are cards!!!
             </h3>
-            <button onClick={sendTest}>Test</button>
+            <span>
+                { port ? 'Port connected: ' : 'Port is null.' }
+                <button onClick={sendTest} disabled={port === null}>Test</button>
+            </span>
+            { /*spellbinderData &&*/
+                spellbinderData
+            }
         </>
     )
 }

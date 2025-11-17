@@ -15,7 +15,7 @@ browser.runtime.onConnect.addListener((port) => {
         port.onMessage.addListener((msg: AnyMsg) => {
             // popup -> background: { type:'toContent', tabID, payload }
             console.log(`[Spellbinder] (from Popup) ${JSON.stringify(msg)}`);
-            contentPorts.forEach((p) => p.postMessage(msg.payload));
+            contentPorts.forEach((p) => p.postMessage(msg));
         });
         return;
     }
@@ -28,7 +28,7 @@ browser.runtime.onConnect.addListener((port) => {
         port.onMessage.addListener((msg: AnyMsg) => {
             // popup -> background: { type:'toContent', tabID, payload }
             console.log(`[Spellbinder] (from Content) ${JSON.stringify(msg)}`);
-            popupPorts.forEach((p) => p.postMessage(msg.payload));
+            popupPorts.forEach((p) => p.postMessage(msg));
         });
     }
 });

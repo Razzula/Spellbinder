@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Card, CardFactory, abilities } from 'spellbinder'
 import { CharacterSheet, characterToMeta, ChatMessage, DDBGameLogMessage, DiceRollFulfilledMessage, DiceRollPendingMessage, SpellbinderMeta } from './DDBTypes';
-import { emulateDieRoll, fetchCharacter, mockChatMessage, updateDDBNotes } from './DDBUtils';
+import { emulateDieRoll, fetchCharacter, mockChatMessage, updateCharacterClass, updateDDBNotes } from './DDBUtils';
 
 export type Port = {
     name: string;
@@ -135,7 +135,7 @@ function App({ port }: AppProps) {
         }
     }
 
-    function handleButtonClick() {
+    function handleRollRequest() {
         /**
          * Handle the button click to emulate a die roll.
          */
@@ -147,6 +147,24 @@ function App({ port }: AppProps) {
             spellbinderWS, spellbinderMeta,
             'Test Roll', 1, 'd20', 'spellbinder-mock', 0,
         );
+    }
+
+    function handleClassRequest() {
+        /**
+         * Handle the button click to emulate a class change
+         */
+        if (authToken && characterID) {
+            updateCharacterClass(authToken, characterID, 2190881, 1);
+        }
+    }
+
+    function testPort() {
+        if (port) {
+            port.postMessage({
+                type: 'spellbinder',
+                payload: 'HELLO WORLD!',
+            });
+        }
     }
 
     return (
@@ -179,21 +197,8 @@ function App({ port }: AppProps) {
                     position: 'relative',
                 }}
             >
-                {/* {CardFactory(abilities['Fireball'])} */}
-                <button
-                    className='floatingButton'
-                    style={{
-                        position: 'absolute',
-                        bottom: '1rem',
-                        right: '1rem',
-                        zIndex: 10000,
-                    }}
-                    onClick={handleButtonClick}
-                    disabled={!spellbinderWS || !spellbinderMeta}
-                >
-                    Roll d20!
-                </button>
-
+                {/* NOTE: DDB validates given class ID, so no custom options */}
+                {/* https://character-service.dndbeyond.com/character/v5/game-data/classes?campaignId=...&sharingSetting=2 */}
                 {/* <button
                     className='floatingButton'
                     style={{
@@ -202,13 +207,37 @@ function App({ port }: AppProps) {
                         right: '1rem',
                         zIndex: 10000,
                     }}
+                    onClick={handleClassRequest}
+                    disabled={!spellbinderWS || !spellbinderMeta}
+                >
+                    Set class (2190881 - 2024 Paladin)
+                </button> */}
+
+                <button
+                    className='floatingButton'
+                    onClick={handleRollRequest}
+                    disabled={!spellbinderWS || !spellbinderMeta}
+                >
+                    Roll d20!
+                </button>
+
+                <button
+                    className='floatingButton'
                     onClick={() => setSpellbinderData({
                         origin: 'button',
                     })}
                     disabled={!spellbinderWS || !spellbinderMeta}
                 >
                     Write Notes!
-                </button> */}
+                </button>
+
+                <button
+                    className='floatingButton'
+                    onClick={testPort}
+                    disabled={!spellbinderWS}
+                >
+                    Test port
+                </button>
             </div>
         </div>
     );
